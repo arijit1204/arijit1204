@@ -1,4 +1,4 @@
-# 💫 Hi 👋, I'm Arijit Dutta
+#  Hi 👋, I'm Arijit Dutta
 **A passionate AI & ML Enthusiast || Aspiring Data Scientist || Deep Learning Explorer from India**
 
 ## 🌐 Socials:
