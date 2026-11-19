@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./title.svg" height="72" alt="Hey, I'm Arijit Dutta"/>
+  <img src="./title.svg" height="64" alt="Hey, I'm Arijit Dutta"/>
   <img src="https://raw.githubusercontent.com/SP-XD/SP-XD/refs/heads/main/images/Developer.gif" height="56" alt=""/>
 </p>
 
