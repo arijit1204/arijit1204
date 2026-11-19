@@ -1,6 +1,6 @@
 <h1 align="center">Hey <img src="https://raw.githubusercontent.com/SP-XD/SP-XD/refs/heads/main/images/Developer.gif" height="30px" width="30px"> I'm Arijit Dutta</h1>
 
-<img src="./assets/banner.gif" alt="Banner" width="100%" />
+<img src="./banner.gif" alt="Banner" width="100%" />
 
 <p align="center">
   <img src="https://www.gitskins.com/api/section/hero?username=arijit1204&theme=zen&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F227876835%3Fu%3D754741e1a71c745f3e8c3c23de7c25c8b652484c%26v%3D4" alt="arijit1204 hero visual" />
@@ -40,26 +40,26 @@
 
 <table>
 <tr>
-<td><a href="https://github.com/arijit1204/ScribeBot"><img src="./assets/project-scribebot.svg" width="100%" alt="ScribeBot"/></a></td>
-<td><a href="https://github.com/arijit1204/Pixie"><img src="./assets/project-pixie.svg" width="100%" alt="Pixie"/></a></td>
+<td><a href="https://github.com/arijit1204/ScribeBot"><img src="./project-scribebot.svg" width="100%" alt="ScribeBot"/></a></td>
+<td><a href="https://github.com/arijit1204/Pixie"><img src="./project-pixie.svg" width="100%" alt="Pixie"/></a></td>
 </tr>
 <tr>
-<td><a href="https://github.com/arijit1204/dhartisense"><img src="./assets/project-dhartisense.svg" width="100%" alt="dhartisense"/></a></td>
-<td><a href="https://github.com/arijit1204/autoeda"><img src="./assets/project-autoeda.svg" width="100%" alt="autoeda"/></a></td>
+<td><a href="https://github.com/arijit1204/dhartisense"><img src="./project-dhartisense.svg" width="100%" alt="dhartisense"/></a></td>
+<td><a href="https://github.com/arijit1204/autoeda"><img src="./project-autoeda.svg" width="100%" alt="autoeda"/></a></td>
 </tr>
 </table>
 
-<p align="center"><img src="./assets/now-building.svg" width="100%" alt="Now building: indoor navigation for our college fest"/></p>
+<p align="center"><img src="./now-building.svg" width="100%" alt="Now building: indoor navigation for our college fest"/></p>
 
 ## Contributions
 
-<p align="center"><img src="./assets/commits.svg" width="100%" alt="Commits per week over the last 26 weeks: 123 in 2026, 41 active days, longest run 6 days"/></p>
+<p align="center"><img src="./commits.svg" width="100%" alt="Commits per week over the last 26 weeks: 123 in 2026, 41 active days, longest run 6 days"/></p>
 
 ## Say hello
 
 <p align="center">
-  <a href="LINKEDIN_URL"><img src="https://raw.githubusercontent.com/gauravghongde/social-icons/9d939e1c5b7ea4a24ac39c3e4631970c0aa1b920/SVG/Color/LinkedIN.svg" alt="LinkedIn" height="36"/></a>&nbsp;&nbsp;
-  <a href="mailto:EMAIL_HERE"><img src="https://raw.githubusercontent.com/gauravghongde/social-icons/9d939e1c5b7ea4a24ac39c3e4631970c0aa1b920/SVG/Color/Gmail.svg" alt="Email" height="36"/></a>
+  <a href="https://www.linkedin.com/in/arijit09/"><img src="https://raw.githubusercontent.com/gauravghongde/social-icons/9d939e1c5b7ea4a24ac39c3e4631970c0aa1b920/SVG/Color/LinkedIN.svg" alt="LinkedIn" height="36"/></a>&nbsp;&nbsp;
+  <a href="mailto:duttaarijit1204@gmail.com"><img src="https://raw.githubusercontent.com/gauravghongde/social-icons/9d939e1c5b7ea4a24ac39c3e4631970c0aa1b920/SVG/Color/Gmail.svg" alt="Email" height="36"/></a>
 </p>
 
 <p align="center"><sub>Arijit Dutta · header from the <a href="https://www.gitskins.com/readme-generator?template=community-creative-dev-rt3x">creative dev</a> template by @himanshu201031 · body from the <a href="https://www.gitskins.com/readme-generator?template=community-student-remix-xzws">Student Remix</a> template by @Frost-Asnyc · generated with <a href="https://www.gitskins.com/readme-generator">GitSkins</a></sub></p>
