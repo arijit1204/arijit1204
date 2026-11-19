@@ -1,6 +1,6 @@
 """Redraws the profile cards (the .svg files next to this script) from live GitHub data.
 Run by .github/workflows/cards.yml. Needs GITHUB_TOKEN in the environment."""
-import json, os, sys, textwrap, urllib.request, datetime as dt
+import base64, json, os, sys, textwrap, urllib.request, datetime as dt
 from html import escape
 
 USER = "arijit1204"
@@ -21,6 +21,12 @@ PROJECTS = [
      "Automated EDA for pandas DataFrames: quality scores, column health checks, plain-language insights and train/test drift detection.",
      ["Python", "pandas", "Data quality"]),
 ]
+PROFILE = {
+    "role": "AI engineer",
+    "line": "I build LLM apps: RAG pipelines, voice agents and their backends.",
+    "place": "Kolkata, India",
+    "chips": ["LLM apps", "RAG", "Voice agents", "Applied ML"],
+}
 NOW_BUILDING = {
     "title": "Indoor navigation for our college fest",
     "line": "It runs on visitors' phones with no beacons or extra hardware.",
@@ -43,6 +49,16 @@ def contributions():
     days = [x for w in d["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
             for x in w["contributionDays"]]
     return {dt.date.fromisoformat(x["date"]): x["contributionCount"] for x in days}
+
+def user_info():
+    u = gh(f"https://api.github.com/users/{USER}")
+    repos = gh(f"https://api.github.com/users/{USER}/repos?per_page=100")
+    own = [r for r in repos if not r["fork"] and r["name"].lower() != USER.lower()]
+    with urllib.request.urlopen(u["avatar_url"] + "&s=200", timeout=30) as r:
+        avatar = "data:image/png;base64," + base64.b64encode(r.read()).decode()
+    return {"name": u["name"] or USER, "repos": len(own),
+            "stars": sum(r["stargazers_count"] for r in own),
+            "languages": len({r["language"] for r in own if r["language"]}), "avatar": avatar}
 
 def repo(name):
     return gh(f"https://api.github.com/repos/{USER}/{name}")
@@ -133,6 +149,32 @@ def project_card(i, name, kind, desc, tags, info):
         x += w + 8
     save(f"project-{name.lower()}.svg", o)
 
+def profile_card(info, year_total, today):
+    W, H = 880, 230
+    o = shell(W, H, f"PROFILE · @{USER}".upper(), PROFILE["place"].upper())
+    cx, cy, r = 100, 132, 58
+    o.append(f'<clipPath id="av"><circle cx="{cx}" cy="{cy}" r="{r}"/></clipPath>')
+    o.append(f'<circle cx="{cx}" cy="{cy}" r="{r+5}" fill="none" stroke="{BLUE}" stroke-width="3"/>')
+    if info.get("avatar"):
+        o.append(f'<image href="{info["avatar"]}" x="{cx-r}" y="{cy-r}" width="{2*r}" height="{2*r}" clip-path="url(#av)" preserveAspectRatio="xMidYMid slice"/>')
+    else:
+        o.append(f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="#ddd2bd"/>')
+    x = 190
+    o.append(f'<text x="{x}" y="92" fill="{MUTED}" font-family="{MONO}" font-size="12" letter-spacing="1.6">{escape(PROFILE["role"].upper())}</text>')
+    o.append(f'<text x="{x}" y="130" fill="{INK}" font-family="{SANS}" font-size="36" font-weight="800">{escape(info["name"])}</text>')
+    o.append(f'<text x="{x}" y="156" fill="{BODY}" font-family="{SANS}" font-size="13.5">{escape(PROFILE["line"])}</text>')
+    for t in PROFILE["chips"]:
+        w = len(t) * 7.2 + 22
+        o.append(f'<rect x="{x:.0f}" y="174" width="{w:.0f}" height="26" rx="13" fill="{BLUE}"/>'
+                 f'<text x="{x+w/2:.0f}" y="191" fill="{CREAM}" font-family="{MONO}" font-size="11.5" text-anchor="middle">{escape(t)}</text>')
+        x += w + 8
+    o.append(f'<line x1="690" y1="62" x2="690" y2="204" stroke="#ddd2bd"/>')
+    o.append(stat(712, 78, "REPOS", f"{info['repos']}", 0.3))
+    o.append(stat(800, 78, "STARS", f"{info['stars']}", 0.45))
+    o.append(stat(712, 150, f"IN {today.year}", f"{year_total}", 0.6))
+    o.append(stat(800, 150, "LANGS", f"{info['languages']}", 0.75))
+    save("profile.svg", o)
+
 def now_card(today):
     W, H = 880, 150; p = max(0, min(1, NOW_BUILDING["progress"]))
     o = shell(W, H, "NOW BUILDING", f"{int(p*100)}% · {today:%d %b}".upper())
@@ -148,9 +190,11 @@ def main(fixture=None):
     today = dt.date.today()
     if fixture:  # offline test: python build_cards.py fixture.json
         f = json.load(open(fixture)); today = dt.date.fromisoformat(f["today"])
-        c = {dt.date.fromisoformat(k): v for k, v in f["days"].items()}; repos = f["repos"]
+        c = {dt.date.fromisoformat(k): v for k, v in f["days"].items()}; repos = f["repos"]; info = f.get("info")
     else:
         c = contributions(); repos = {}
+        try: info = user_info()
+        except Exception as e: print("profile lookup failed:", e); info = None
         for name, *_ in PROJECTS:
             try: repos[name] = repo(name)
             except Exception as e: print("repo lookup failed:", name, e); repos[name] = None
@@ -158,6 +202,8 @@ def main(fixture=None):
     for i, (name, kind, desc, tags) in enumerate(PROJECTS, 1):
         project_card(i, name, kind, desc, tags, repos.get(name))
     now_card(today)
+    if info:
+        profile_card(info, sum(v for d, v in c.items() if d.year == today.year), today)
     print("cards written to", os.path.abspath(OUT))
 
 if __name__ == "__main__":

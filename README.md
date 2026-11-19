@@ -2,11 +2,7 @@
 
 <img src="./banner.gif" alt="Banner" width="100%" />
 
-<p align="center">
-  <img src="https://www.gitskins.com/api/section/hero?username=arijit1204&theme=zen&avatar=https%3A%2F%2Favatars.githubusercontent.com%2Fu%2F227876835%3Fu%3D754741e1a71c745f3e8c3c23de7c25c8b652484c%26v%3D4" alt="arijit1204 hero visual" />
-</p>
-
-**Arijit Dutta** · AI engineer · Kolkata, India
+<p align="center"><img src="./profile.svg" width="100%" alt="Arijit Dutta, AI engineer, Kolkata"/></p>
 
 ## Right now
 
