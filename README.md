@@ -1,4 +1,7 @@
-<h1 align="center">Hey <img src="https://raw.githubusercontent.com/SP-XD/SP-XD/refs/heads/main/images/Developer.gif" height="30px" width="30px"> I'm Arijit Dutta</h1>
+<p align="center">
+  <img src="./title.svg" height="72" alt="Hey, I'm Arijit Dutta"/>
+  <img src="https://raw.githubusercontent.com/SP-XD/SP-XD/refs/heads/main/images/Developer.gif" height="56" alt=""/>
+</p>
 
 <img src="./banner.gif" alt="Banner" width="100%" />
 
